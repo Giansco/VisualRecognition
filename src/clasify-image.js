@@ -57,7 +57,8 @@ function main(params) {
             visualRecognition.classify(classifyParams)
                 .then(classifiedImages => {
                     console.log(JSON.stringify(classifiedImages.result, null, 2));
-                    const res = classifiedImages.result.images[0].classifiers[0].classes;
+                    const classifiers = classifiedImages.result.images[0].classifiers;
+                    const res = classifiers.length ? classifiedImages.result.images[0].classifiers[0].classes : [];
                     const validRes = res.filter( cl => cl.class === 'person' && cl.score >= 0.5);
                     resolve({
                         statusCode: 200,

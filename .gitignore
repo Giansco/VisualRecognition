@@ -139,4 +139,6 @@ node_modules
 
 lib
 
+config/ai-params.json
+
 ai-params.json
