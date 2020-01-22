@@ -1,7 +1,6 @@
-const fs = require('fs');
 const VisualRecognitionV3 = require('ibm-watson/visual-recognition/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
-// const ai = require('./config/ai-params.json');
+const Buffer = require('buffer').Buffer;
 
 /*const visualRecognition = new VisualRecognitionV3({
     version: ai.version,
@@ -49,8 +48,10 @@ function main(params) {
 
         try {
 
+            // const buffer = Buffer.from(params.imageString, 'base64');
+            const buffer = Buffer.from(params.imageString);
             const classifyParams = {
-                url: params.url,
+                imagesFile: buffer,
                 classifier_ids: ['person'],
             };
 
